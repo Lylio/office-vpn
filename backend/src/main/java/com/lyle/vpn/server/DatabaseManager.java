@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class DatabaseManager {
+
     private final String url;
     private final String user;
     private final String password;
 
     public DatabaseManager() {
-        url = env("DB_URL", "jdbc:mysql://localhost:3306/office_vpn");
-        user = env("DB_USER", "root");
-        password = env("DB_PASSWORD", "");
+        this.url = env("DB_URL", "jdbc:postgresql://localhost:5432/vpn_app");
+        this.user = env("DB_USER", "vpn_user");
+        this.password = env("DB_PASSWORD", "vpn_password");
     }
 
     private static String env(String name, String fallback) {
