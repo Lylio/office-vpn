@@ -1,0 +1,38 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: #f5f7fb;
+}
+
+.title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #667085;
+}
+
+.header {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.topbar {
+    -fx-background-color: white;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 0 0 1 0;
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.text-area {
+    -fx-font-family: "Consolas", monospace;
+}
