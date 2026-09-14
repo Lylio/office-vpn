@@ -12,7 +12,7 @@
 | Client Build | ![NPM](https://img.shields.io/badge/npm-white.svg?style=for-the-badge&logo=npm&logoColor=CB3837)               |                                                                                                                                                                                                                                                                                               
 | Server Build | ![Maven](https://img.shields.io/badge/maven-white.svg?style=for-the-badge&logo=apache%20maven&logoColor=C71A36)                                                                                                  |
 | API          | ![Swagger](https://img.shields.io/badge/swagger-85EA2D.svg?style=for-the-badge&logo=swagger&logoColor=FFF)                                                                                                       |
-| Repo Size    | ![Repo Size](https://github.com/Lylio/office-vpn)?style=for-the-badge)                                                                                                                  |
+| Repo Size    | ![Repo Size](https://img.shields.io/github/repo-size/lylio/office-vpn?style=for-the-badge)                                                                                                                  |
 
 A learning-focused Java 21 application demonstrating:
 
