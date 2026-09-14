@@ -47,6 +47,10 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -55,8 +59,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.4.4</version>
+
                 <configuration>
-                    <mainClass>com.lyle.vpn.server.VpnServer</mainClass>
+                    <mainClass>com.lyle.vpn.api.OfficeVpnApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
