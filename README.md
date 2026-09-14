@@ -1,6 +1,6 @@
 # Office VPN Simulator
 
-A learning-focused Java 17 application demonstrating:
+A learning-focused Java 21 application demonstrating:
 
 - Java TCP sockets
 - ECDH key agreement
@@ -20,7 +20,7 @@ Do not expose this project directly to the public Internet without further harde
 
 ## Requirements
 
-- JDK 17+
+- JDK 21+
 - Maven 3.9+
 - MySQL 8+
 - Windows/Linux/macOS
