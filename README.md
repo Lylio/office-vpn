@@ -1,5 +1,19 @@
 # Office VPN Simulator
 
+### Tech Stack
+
+| Component    | Tech                                                                                                                                                                                                             |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| App Link     | [offline]                                                                                                                                                     |                                                                                                                                                                                                                                                                                               
+| Frontend     | ![JavaFX](https://img.shields.io/badge/%E2%80%8E%20-JavaFX-orange?logo=coffeescript&logoColor=white)                                                                                               |
+| Backend      | ![Java](https://img.shields.io/badge/JAVA%20-JDK%2011-green?style=for-the-badge) ![Spring Boot](https://img.shields.io/badge/spring%20boot%202.1-white.svg?style=for-the-badge&logo=springboot&logoColor=6DB33F)|
+| Database     | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)                                                                                                     |
+| Cloud        | [offline]                                                                                                        |
+| Client Build | ![NPM](https://img.shields.io/badge/npm-white.svg?style=for-the-badge&logo=npm&logoColor=CB3837)               |                                                                                                                                                                                                                                                                                               
+| Server Build | ![Maven](https://img.shields.io/badge/maven-white.svg?style=for-the-badge&logo=apache%20maven&logoColor=C71A36)                                                                                                  |
+| API          | ![Swagger](https://img.shields.io/badge/swagger-85EA2D.svg?style=for-the-badge&logo=swagger&logoColor=FFF)                                                                                                       |
+| Repo Size    | ![Repo Size](https://github.com/Lylio/office-vpn)?style=for-the-badge)                                                                                                                  |
+
 A learning-focused Java 21 application demonstrating:
 
 - Java TCP sockets
