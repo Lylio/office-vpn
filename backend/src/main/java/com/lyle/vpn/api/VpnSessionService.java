@@ -1,48 +1,52 @@
 package com.lyle.vpn.api;
 
-import com.lyle.vpn.server.DatabaseManager;
+import com.lyle.vpn.client.VpnClient;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VpnSessionService {
 
-    private final DatabaseManager databaseManager = new DatabaseManager();
+    private static final String VPN_HOST = "localhost";
+    private static final int VPN_PORT = 5555;
 
-    private boolean connected = false;
-    private Long currentLogId = null;
+    private VpnClient vpnClient;
 
-    public synchronized boolean connect() throws Exception {
-        if (connected) {
-            return true;
+    public synchronized void connect(String username, String password) throws Exception {
+        if (isConnected()) {
+            return;
         }
 
-        currentLogId = databaseManager.logConnection(
-                "admin",
-                "127.0.0.1",
-                "CONNECTED"
-        );
+        VpnClient newClient = new VpnClient(VPN_HOST, VPN_PORT);
 
-        connected = true;
-
-        return true;
+        try {
+            newClient.connect(username, password);
+            this.vpnClient = newClient;
+        } catch (Exception e) {
+            newClient.close();
+            throw e;
+        }
     }
 
-    public synchronized boolean disconnect() throws Exception {
-        if (!connected) {
-            return true;
+    public synchronized void disconnect() {
+        if (vpnClient != null) {
+            vpnClient.close();
+            vpnClient = null;
         }
-
-        if (currentLogId != null) {
-            databaseManager.closeConnectionLog(currentLogId);
-        }
-
-        connected = false;
-        currentLogId = null;
-
-        return true;
     }
 
     public synchronized boolean isConnected() {
-        return connected;
+        return vpnClient != null;
+    }
+
+    public synchronized String getUsername() {
+        return vpnClient != null
+                ? vpnClient.username()
+                : null;
+    }
+
+    public synchronized String getRole() {
+        return vpnClient != null
+                ? vpnClient.role()
+                : null;
     }
 }

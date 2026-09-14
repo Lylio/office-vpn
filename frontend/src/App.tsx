@@ -3,6 +3,11 @@ import './App.css';
 
 function App() {
   const [connected, setConnected] = useState(false);
+  const [username, setUsername] = useState('admin');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+  const [connectionMessage, setConnectionMessage] = useState('');
+  const [connectionLoading, setConnectionLoading] = useState(false);
 
   const [apiOnline, setApiOnline] = useState(false);
   const [vpnOnline, setVpnOnline] = useState(false);
@@ -42,25 +47,82 @@ function App() {
   }, []);
 
   const toggleConnection = async () => {
+    setConnectionLoading(true);
+    setConnectionMessage('');
+
     try {
-      const endpoint = connected
-          ? '/api/disconnect'
-          : '/api/connect';
+      if (connected) {
 
-      const response = await fetch(endpoint, {
-        method: 'POST',
-      });
+        const response = await fetch('/api/disconnect', {
+          method: 'POST',
+        });
 
-      if (!response.ok) {
-        throw new Error('Connection request failed');
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+              data.message || 'Disconnect failed'
+          );
+        }
+
+        setConnected(false);
+        setRole('');
+        setConnectionMessage(data.message);
+
+      } else {
+
+        const response = await fetch('/api/connect', {
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json',
+          },
+
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+              data.message || 'Connection failed'
+          );
+        }
+
+        setConnected(data.connected);
+        setRole(data.role ?? '');
+
+        setConnectionMessage(
+            data.message
+        );
       }
 
-      const data = await response.json();
-
-      setConnected(data.connected);
-
     } catch (error) {
-      console.error('VPN connection error:', error);
+
+      console.error(
+          'VPN connection error:',
+          error
+      );
+
+      setConnected(false);
+
+      if (error instanceof Error) {
+        setConnectionMessage(
+            error.message
+        );
+      } else {
+        setConnectionMessage(
+            'Unexpected connection error'
+        );
+      }
+
+    } finally {
+
+      setConnectionLoading(false);
+
     }
   };
 
