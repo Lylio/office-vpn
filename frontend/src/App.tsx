@@ -46,6 +46,37 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const checkConnection = async () => {
+      try {
+        const response = await fetch('/api/connection');
+
+        if (!response.ok) {
+          return;
+        }
+
+        const data = await response.json();
+
+        setConnected(data.connected);
+
+        if (data.username) {
+          setUsername(data.username);
+        }
+
+        if (data.role) {
+          setRole(data.role);
+        }
+      } catch (error) {
+        console.error(
+            'Unable to retrieve connection state:',
+            error
+        );
+      }
+    };
+
+    checkConnection();
+  }, []);
+
   const toggleConnection = async () => {
     setConnectionLoading(true);
     setConnectionMessage('');
@@ -94,6 +125,7 @@ function App() {
 
         setConnected(data.connected);
         setRole(data.role ?? '');
+        setPassword('');
 
         setConnectionMessage(
             data.message
@@ -108,6 +140,7 @@ function App() {
       );
 
       setConnected(false);
+      setPassword('');
 
       if (error instanceof Error) {
         setConnectionMessage(
@@ -149,9 +182,9 @@ function App() {
 
           <div className="connection-status">
             <div
-              className={`status-circle ${
-                connected ? 'online' : 'offline'
-              }`}
+                className={`status-circle ${
+                    connected ? 'online' : 'offline'
+                }`}
             />
 
             <div>
@@ -161,22 +194,80 @@ function App() {
 
               <p>
                 {connected
-                  ? 'Your connection is currently secure.'
-                  : 'Connect to access the office network.'}
+                    ? 'Your connection is currently secure.'
+                    : 'Connect to access the office network.'}
               </p>
             </div>
           </div>
 
+          {!connected && (
+              <div className="login-form">
+                <label>
+                  Username
+                  <input
+                      type="text"
+                      value={username}
+                      onChange={(event) =>
+                          setUsername(event.target.value)
+                      }
+                      autoComplete="username"
+                  />
+                </label>
+
+                <label>
+                  Password
+                  <input
+                      type="password"
+                      value={password}
+                      onChange={(event) =>
+                          setPassword(event.target.value)
+                      }
+                      autoComplete="current-password"
+                  />
+                </label>
+              </div>
+          )}
+
+          {connected && (
+              <div className="session-details">
+                <div className="info-row">
+                  <span>Authenticated User</span>
+                  <strong>{username}</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Role</span>
+                  <strong>{role}</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Encryption</span>
+                  <strong>ECDH / AES-256-GCM</strong>
+                </div>
+              </div>
+          )}
+
           <button
-            className={
-              connected
-                ? 'disconnect-button'
-                : 'connect-button'
-            }
-            onClick={toggleConnection}
+              className={
+                connected
+                    ? 'disconnect-button'
+                    : 'connect-button'
+              }
+              onClick={toggleConnection}
+              disabled={connectionLoading}
           >
-            {connected ? 'Disconnect' : 'Connect'}
+            {connectionLoading
+                ? 'Working...'
+                : connected
+                    ? 'Disconnect'
+                    : 'Connect'}
           </button>
+
+          {connectionMessage && (
+              <p className="connection-message">
+                {connectionMessage}
+              </p>
+          )}
         </section>
 
         <section className="card">
