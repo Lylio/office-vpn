@@ -1,0 +1,63 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: office-vpn-db
+
+    environment:
+      POSTGRES_DB: vpn_app
+      POSTGRES_USER: vpn_user
+      POSTGRES_PASSWORD: vpn_password
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vpn_user -d vpn_app"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+    restart: unless-stopped
+
+
+  backend:
+    build:
+      context: ./backend
+
+    container_name: office-vpn-backend
+
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/vpn_app
+      DB_USER: vpn_user
+      DB_PASSWORD: vpn_password
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    ports:
+      - "8080:8080"
+      - "5555:5555"
+
+    restart: unless-stopped
+
+
+  frontend:
+    build:
+      context: ./frontend
+
+    container_name: office-vpn-frontend
+
+    depends_on:
+      - backend
+
+    ports:
+      - "3000:80"
+
+    restart: unless-stopped
+
+
+volumes:
+  postgres_data:
