@@ -25,6 +25,23 @@ A learning-focused Java 21 application demonstrating:
 - User roles and access control
 - Connection logging
 
+## Project structure
+
+    office-vpn/
+    ├── pom.xml
+    ├── README.md
+    ├── database/schema.sql
+    └── src/main/
+        ├── java/com/lyle/vpn/
+        │   ├── common/
+        │   ├── server/
+        │   └── client/
+        └── resources/com/lyle/vpn/client/
+            ├── login.fxml
+            ├── dashboard.fxml
+            └── styles.css
+
+
 ## Important security note
 
 This is a **VPN simulator / secure application tunnel**, not a production operating-system VPN. It does not create a Windows/Linux virtual network adapter or route arbitrary IP packets.
@@ -119,18 +136,3 @@ Passwords use PBKDF2WithHmacSHA256 with a per-user random salt.
 
 These choices are for learning. A production VPN should normally use a mature VPN protocol and implementation rather than inventing a protocol.
 
-## Project structure
-
-    office-vpn/
-    ├── pom.xml
-    ├── README.md
-    ├── database/schema.sql
-    └── src/main/
-        ├── java/com/lyle/vpn/
-        │   ├── common/
-        │   ├── server/
-        │   └── client/
-        └── resources/com/lyle/vpn/client/
-            ├── login.fxml
-            ├── dashboard.fxml
-            └── styles.css
