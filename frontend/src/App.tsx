@@ -202,29 +202,37 @@ function App() {
 
           {!connected && (
               <div className="login-form">
-                <label>
-                  Username
+
+                <div className="form-group">
+                  <label htmlFor="username">Username</label>
+
                   <input
+                      id="username"
                       type="text"
                       value={username}
                       onChange={(event) =>
                           setUsername(event.target.value)
                       }
                       autoComplete="username"
+                      placeholder="Enter username"
                   />
-                </label>
+                </div>
 
-                <label>
-                  Password
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+
                   <input
+                      id="password"
                       type="password"
                       value={password}
                       onChange={(event) =>
                           setPassword(event.target.value)
                       }
                       autoComplete="current-password"
+                      placeholder="Enter password"
                   />
-                </label>
+                </div>
+
               </div>
           )}
 
