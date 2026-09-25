@@ -40,7 +40,9 @@ A learning-focused Java 21 application demonstrating:
             ├── login.fxml
             ├── dashboard.fxml
             └── styles.css
+## Screenshot
 
+![img.png](images/img.png)
 
 ## Important security note
 
