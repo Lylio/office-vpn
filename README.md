@@ -44,6 +44,9 @@ A learning-focused Java 21 application demonstrating:
             ├── login.fxml
             ├── dashboard.fxml
             └── styles.css
+<img width="4601" height="11733" alt="diagram (1)" src="https://github.com/user-attachments/assets/ff65daa6-eb09-4067-98b1-8993fda9ccb6" />
+
+
 ## Screenshot
 
 ![img.png](images/img.png)
