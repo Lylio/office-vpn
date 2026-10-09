@@ -1,5 +1,9 @@
 # Office VPN Simulator
 
+## Description
+
+Office VPN Simulator provides a browser dashboard and a JavaFX client for connecting to a multi-client encrypted TCP server. The main browser workflow checks service status and submits connect/disconnect requests to the Spring API, which manages a VPN client session; the JavaFX path connects directly. Server handlers authenticate users, enforce admin operations, exchange messages, and record connection activity in MySQL. The README documents roles, user administration, and connection logs. The sampled sources show these paths, though the web dashboard’s activity panel is not backed by a sampled activity API.
+
 ### Tech Stack
 
 | Component    | Tech                                                                                                                                                                                                             |
