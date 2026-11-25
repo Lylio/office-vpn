@@ -6,16 +6,17 @@ Office VPN Simulator provides a browser dashboard and a JavaFX client for connec
 
 ### Tech Stack
 
-| Component    | Tech                                                                                                                                                                                                             |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| App Link     | ![offline](https://img.shields.io/badge/offline-bf2424)                                                                                                                                                     |                                                                                                                                                                                                                                                                                               
-| Frontend     | ![JavaFX](https://img.shields.io/badge/%E2%80%8E%20-JavaFX-orange?logo=coffeescript&logoColor=white)                                                                                               |
-| Backend      | ![Java](https://img.shields.io/badge/JAVA%20-JDK%2021-green?style=for-the-badge) ![Spring Boot](https://img.shields.io/badge/spring%20boot%20-white.svg?style=for-the-badge&logo=springboot&logoColor=6DB33F)|
-| Database     | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)                                                                                                     |
-| Cloud        | ![offline](https://img.shields.io/badge/offline-bf2424)                                                                                                        |
-| Client Build | ![NPM](https://img.shields.io/badge/npm-white.svg?style=for-the-badge&logo=npm&logoColor=CB3837)               |                                                                                                                                                                                                                                                                                               
-| Server Build | ![Maven](https://img.shields.io/badge/maven-white.svg?style=for-the-badge&logo=apache%20maven&logoColor=C71A36)                                                                                                  |
-| Repo Size    | ![Repo Size](https://img.shields.io/github/repo-size/lylio/office-vpn?style=for-the-badge)                                                                                                                  |
+| Component | Tech |
+| --- | --- |
+| Local Run | [![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#start-the-complete-application) |
+| Frontend | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
+| Backend | ![Java JDK 21](https://img.shields.io/badge/JAVA-JDK%2021-green?style=for-the-badge) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-white?style=for-the-badge&logo=springboot&logoColor=6DB33F) |
+| Scheduling | ![Quartz](https://img.shields.io/badge/Quartz-364F6B?style=for-the-badge) |
+| Database | ![PostgreSQL 17](https://img.shields.io/badge/PostgreSQL_17-4169E1?style=for-the-badge&logo=postgresql&logoColor=white) ![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=for-the-badge&logo=flyway&logoColor=white) |
+| Client Build | ![npm](https://img.shields.io/badge/npm-white?style=for-the-badge&logo=npm&logoColor=CB3837) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) |
+| Server Build | ![Maven](https://img.shields.io/badge/Maven-white?style=for-the-badge&logo=apachemaven&logoColor=C71A36) |
+| CI | ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white) |
+| Repo Size | ![Repo Size](https://img.shields.io/github/repo-size/Lylio/job-scheduler?style=for-the-badge) |                                                               |
 
 A learning-focused Java 21 application demonstrating:
 
